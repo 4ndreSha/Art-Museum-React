@@ -7,7 +7,7 @@
     "start": "webpack serve --config webpack/webpack.config.js --env env=dev --open",
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
     "format": "prettier --write .",
-    "lint": "eslint . --ext .js,.jsx"
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -37,11 +37,13 @@
     "css-loader": "^7.1.2",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^28.8.3",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.1",
     "gh-pages": "^6.1.1",
     "globals": "^15.10.0",
     "html-webpack-plugin": "^5.6.0",
+    "jest": "^29.7.0",
     "prettier": "^3.3.3",
     "sass": "^1.79.4",
     "sass-loader": "^16.0.2",
