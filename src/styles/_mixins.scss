@@ -1,1 +1,20 @@
-//There will be code soon
+@mixin font($size, $weight, $family: Lexend Deca) {
+  font-size: $size;
+  font-weight: $weight;
+  font-family: $family;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-container($direction: row, $justify: flex-start, $align: stretch, $gap: null, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+  flex-wrap: $wrap;
+}
