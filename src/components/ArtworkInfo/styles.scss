@@ -1,0 +1,67 @@
+.artwork {
+  @include flex-container(row, center, flex-start, 5rem);
+  flex: 1 0 auto;
+  flex-wrap: wrap;
+  padding: 120px 20px;
+
+  &__image {
+    align-self: start;
+    max-width: 500px;
+    max-height: 580px;
+    position: relative;
+
+    .bookmarkButton {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+    }
+
+    img {
+      background-color: yellow;
+      height: 550px;
+      width: 480px;
+    }
+  }
+
+  &__textContainer {
+    @include flex-container(column, space-between, flex-start, 10rem);
+    color: $color-dark;
+    width: 40%;
+  }
+
+  &__info {
+    @include flex-container(column);
+    gap: 1rem;
+
+    &-name {
+      @include font(2rem, 400, 40px);
+      padding-bottom: 1rem;
+    }
+
+    &-author {
+      @include font(1.5rem, 400, 30px);
+    }
+
+    &-date {
+      @include font(1rem, 700, 20px);
+    }
+  }
+
+  &__overview {
+    @include flex-container(column);
+    gap: 1rem;
+
+    &-title {
+      @include font(2rem, 400, 40px);
+      padding-bottom: 1rem;
+    }
+
+    &-nationality,
+    &-dimensions,
+    &-creditLine,
+    &-repository,
+    &-access {
+      @include font(1rem, 400, 20px);
+    }
+  }
+}
