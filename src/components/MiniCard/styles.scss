@@ -5,6 +5,7 @@
   border: 1px solid $color-border-light;
   @include flex-container(row, space-between, center);
   gap: 1rem;
+  background-color: $color-white;
   // flex-wrap: wrap;
 
   &__image {
@@ -13,39 +14,24 @@
   }
   &__info {
     @include flex-container(column, space-between, flex-start);
-    @include long-text;
     max-width: 219px;
     max-height: 98px;
     width: 100%;
+
     &-name {
+      @include long-text;
       @include font(1.125rem, 500, 26.32px);
       color: $color-dark;
     }
     &-author {
+      @include long-text;
       @include font(1rem, 400, 26.32px);
-      color: $color-orange;
     }
     &-access {
+      @include long-text;
       @include font(1rem, 700, 26.32px);
       color: $color-dark;
       margin-top: 1rem;
-    }
-  }
-  &__favButton {
-    background-color: $color-bg-bookmark;
-    width: 59px;
-    height: 59px;
-    border-radius: 99px;
-    transition: 0.3s ease;
-    @include flex-center;
-
-    &::before {
-      content: "";
-      @include css-icon("~@assets/bookmark.svg", 24px, 16px);
-    }
-
-    &:hover {
-      background-color: $color-bg-bookmark-hover;
     }
   }
 }
