@@ -1,5 +1,6 @@
 import React from "react";
 import MiniCard from "@components/MiniCard";
+import Pagination from "@components/Pagination";
 
 import "@components/SearchComponent/styles.scss";
 
@@ -22,8 +23,15 @@ const SearchComponent = () => {
         <button type="submit" className="search__form-submit" />
       </form>
 
-      <div className="search__list">
-        <MiniCard />
+      <div className="search__list-wrapper">
+        <div className="search__list">
+          {/* {result.map()} */}
+          <MiniCard />
+          <MiniCard />
+          <MiniCard />
+          <MiniCard />
+        </div>
+        <Pagination />
       </div>
     </section>
   );
