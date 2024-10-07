@@ -1,0 +1,43 @@
+.favorites {
+  @include flex-start;
+  flex: 1 0 auto;
+  padding: 7rem 0;
+  text-align: center;
+  color: $color-dark;
+
+  &__title {
+    @include font(3.5rem, 700, 80px);
+    text-transform: capitalize;
+    margin-bottom: 50px;
+    @include flex-start(row);
+
+    &::before {
+      content: "";
+      display: inline-block;
+      @include css-icon("~@assets/bookmark.svg", 50px, 33px);
+      margin: 0 18px;
+    }
+    &-icon {
+      height: 52px;
+      padding-top: 10px;
+    }
+  }
+  &__subtitle {
+    @include font(3.5rem, 700, 80px);
+  }
+  &__list {
+    @include mini-card-list;
+
+    &-title {
+      @include font(2rem, 400, 40px);
+    }
+    &-subtitle {
+      @include font(1rem, 400, 20px);
+    }
+    &-empty {
+      margin-top: 50px;
+      @include font(1.2rem, 400, 20px);
+      color: $color-light-grey;
+    }
+  }
+}
