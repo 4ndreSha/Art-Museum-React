@@ -5,7 +5,7 @@ import logo from "@assets/museum-logo-dark.svg";
 import home from "@assets/home.svg";
 import bookmark from "@assets/bookmark.svg";
 
-import "@components/Header/index.scss";
+import "@components/Header/styles.scss";
 
 const Header = () => {
   const location = useLocation();

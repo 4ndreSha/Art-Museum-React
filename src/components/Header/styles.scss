@@ -8,11 +8,11 @@
   &__nav {
     @include flex-container;
     gap: 1rem;
-    @include font(19px, 400, Inter);
+    @include font(19px, 400, normal, Inter);
 
     &-link {
       color: $color-white;
-      @include flex-center;
+      @include flex-start(row);
       gap: 0.5rem;
       text-decoration: none;
       position: relative;
@@ -35,14 +35,4 @@
       }
     }
   }
-}
-
-.link {
-  padding: 10px;
-  margin: 10px;
-  background-color: gold;
-}
-
-body {
-  background-color: black;
 }

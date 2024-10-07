@@ -3,7 +3,7 @@ import museumLogo from "@assets/museum-logo-light.svg";
 import modsenLogo from "@assets/modsen-logo.svg";
 import { NavLink, useLocation } from "react-router-dom";
 
-import "@components/Footer/index.scss";
+import "@components/Footer/styles.scss";
 
 const Footer = () => {
   return (
