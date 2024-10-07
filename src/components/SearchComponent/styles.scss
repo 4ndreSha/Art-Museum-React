@@ -1,0 +1,51 @@
+.search {
+  @include flex-start;
+  flex: 1 0 auto;
+  margin: 0 0.5rem;
+
+  &__title {
+    color: $color-dark;
+    @include font(4rem, 700, 80px);
+    text-transform: capitalize;
+    max-width: 700px;
+    margin: 2rem 0.5rem;
+    text-align: center;
+  }
+
+  &__form {
+    width: 100%;
+    max-width: 500px;
+    height: 64px;
+    padding: 16px;
+    border-radius: 16px;
+    @include flex-container(row, space-between, center);
+    @include font(1rem, 400, 16.94px);
+    background-color: $color-bg-search;
+
+    &-input {
+      width: 80%;
+      background-color: transparent;
+      border: none;
+    }
+
+    &-submit {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      @include css-icon("~@assets/search.svg", 32px, 32px);
+    }
+  }
+
+  &__list {
+    @include flex-start(row);
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+}
+
+.error {
+  margin-top: 15px;
+  color: $color-red;
+}
