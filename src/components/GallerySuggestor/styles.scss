@@ -1,0 +1,18 @@
+.suggestor {
+  @include flex-start;
+  margin: 60px 0 120px 0;
+  text-align: center;
+
+  &__subtitle {
+    @include font(1rem, 400, 20px);
+  }
+
+  &__title {
+    color: $color-dark;
+    @include font(2rem, 400, 40px);
+  }
+
+  &__list {
+    @include mini-card-list;
+  }
+}
