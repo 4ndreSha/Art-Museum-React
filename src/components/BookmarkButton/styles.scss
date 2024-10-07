@@ -1,0 +1,18 @@
+.bookmarkButton {
+  cursor: pointer;
+  background-color: $color-bg-bookmark;
+  width: 59px;
+  height: 59px;
+  border-radius: 99px;
+  transition: 0.3s ease;
+  @include flex-center;
+
+  &::before {
+    content: "";
+    @include css-icon("~@assets/bookmark.svg", 24px, 16px);
+  }
+
+  &:hover {
+    background-color: $color-bg-bookmark-hover;
+  }
+}
