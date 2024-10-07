@@ -1,0 +1,29 @@
+.pagination {
+  @include flex-container(row, flex-end, center, 1rem);
+
+  &__button {
+    &-1,
+    &-2,
+    &-3,
+    &-4,
+    &-next {
+      cursor: pointer;
+      @include font(1.25rem, 300);
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      background-color: $color-bg-main;
+
+      &:hover {
+        background-color: $color-orange;
+        color: $color-white;
+      }
+    }
+
+    &-next {
+      padding-bottom: 8px;
+      @include font(2rem, 300);
+      @include flex-center;
+    }
+  }
+}
