@@ -1,7 +1,7 @@
 .search {
   @include flex-start;
   flex: 1 0 auto;
-  margin: 0 0.5rem;
+  margin: 120px 1rem 60px 1rem;
 
   &__title {
     color: $color-dark;
@@ -38,10 +38,10 @@
   }
 
   &__list {
-    @include flex-start(row);
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin: 2rem 0;
+    @include mini-card-list;
+  }
+  .pagination {
+    margin: 0 10%;
   }
 }
 
