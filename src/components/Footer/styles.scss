@@ -1,0 +1,6 @@
+.footer {
+  @include flex-container(row, space-around, center, null, wrap);
+  background: $color-bg-footer;
+  width: 100%;
+  height: 127px;
+}

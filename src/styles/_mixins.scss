@@ -1,1 +1,52 @@
-//There will be code soon
+@mixin font($size, $weight, $lineHeight: normal, $family: Lexend Deca) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+  font-family: $family;
+}
+
+@mixin flex-start($direction: column) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin flex-center($direction: column) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin flex-container($direction: row, $justify: flex-start, $align: stretch, $gap: null, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+  flex-wrap: $wrap;
+}
+
+@mixin css-icon($url, $height: 50px, $width: 33px) {
+  background-image: url($url);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: $height;
+  width: $width;
+}
+
+@mixin long-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+@mixin mini-card-list {
+  @include flex-container(row, center, center, 1rem);
+  flex-wrap: wrap;
+  margin: 2rem 1rem;
+  max-width: 1280px;
+}

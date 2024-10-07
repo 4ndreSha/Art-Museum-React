@@ -4,8 +4,15 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: path.resolve(__dirname, "..", "./src/index.tsx"),
   resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "..", "src/"),
+      "@assets": path.resolve(__dirname, "..", "src/assets"),
+      "@components": path.resolve(__dirname, "..", "src/components"),
+      "@pages": path.resolve(__dirname, "..", "src/pages"),
+    },
     extensions: [".tsx", ".ts", ".js"],
   },
+
   module: {
     rules: [
       {
@@ -24,16 +31,26 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          // Creates `style` nodes from JS strings
           "style-loader",
-          // Translates CSS into CommonJS
           "css-loader",
-          // Compiles Sass to CSS
-          "sass-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              additionalData: `@import "@/styles/_variables.scss", "@/styles/_mixins.scss";`,
+            },
+          },
         ],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+        include: [path.join(__dirname, "src/assets")],
+        loader: "file-loader",
+        options: {
+          name: "assets/[name].[ext]",
+        },
+      },
+      {
+        test: /\.(?:ico|gif|png|svg|jpg|jpeg)$/i,
         type: "asset/resource",
       },
       {

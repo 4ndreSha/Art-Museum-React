@@ -1,0 +1,49 @@
+.card {
+  width: 387px;
+  height: 514px;
+  position: relative;
+
+  &__info-container {
+    border: 1px solid $color-border-light;
+    background-color: $color-white;
+    position: absolute;
+    left: 26px;
+    top: 382px;
+    width: 334px;
+    height: 132px;
+    padding: 0 1rem;
+    @include flex-container(row, space-around, center, 2rem);
+  }
+
+  &__image {
+    background-color: yellow;
+    width: 100%;
+    height: 460px;
+  }
+
+  &__info {
+    @include flex-container(column, space-around, flex-start);
+    @include long-text;
+    max-width: 200px;
+    padding-right: 20px;
+
+    &-name {
+      @include long-text;
+      @include font(1.125rem, 500, 26px);
+      color: $color-dark;
+    }
+    &-author {
+      @include long-text;
+      @include font(1rem, 400, 26px);
+    }
+    &-access {
+      @include long-text;
+      @include font(1rem, 700, 26px);
+      color: $color-dark;
+      margin-top: 0.5rem;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
