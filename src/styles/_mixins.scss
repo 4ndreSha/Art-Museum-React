@@ -1,13 +1,22 @@
-@mixin font($size, $weight, $family: Lexend Deca) {
+@mixin font($size, $weight, $lineHeight: normal, $family: Lexend Deca) {
   font-size: $size;
   font-weight: $weight;
+  line-height: $lineHeight;
   font-family: $family;
 }
 
-@mixin flex-center {
+@mixin flex-start($direction: column) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin flex-center($direction: column) {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: $direction;
 }
 
 @mixin flex-container($direction: row, $justify: flex-start, $align: stretch, $gap: null, $wrap: nowrap) {
@@ -17,4 +26,19 @@
   align-items: $align;
   gap: $gap;
   flex-wrap: $wrap;
+}
+
+@mixin css-icon($url, $height: 50px, $width: 33px) {
+  background-image: url($url);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: $height;
+  width: $width;
+}
+
+@mixin long-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
