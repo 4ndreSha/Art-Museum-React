@@ -1,6 +1,5 @@
 .list {
-  @include flex-center(row);
-  gap: 20px;
+  @include flex-container(row, space-between, center, 1rem);
   flex-wrap: wrap;
   margin: 2rem 0;
 }
