@@ -4,6 +4,7 @@ import Pagination from "@components/Pagination";
 import SortButton from "@components/SortButton";
 import { getArtworksSearch } from "@/api";
 import { ArtworkCollection, ArtworkData, SearchForm } from "@/types";
+import { useDebounce } from "@/utils";
 
 import "@components/SearchComponent/styles.scss";
 
@@ -18,6 +19,8 @@ const SearchComponent = () => {
     sortParameter: "date_start",
     order: "asc",
   });
+
+  const debouncedValue = useDebounce(searchForm);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -58,11 +61,11 @@ const SearchComponent = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentPage, searchForm]);
+  }, [currentPage, debouncedValue]);
 
   useEffect(() => {
     fetchArtworks();
-  }, [currentPage, searchForm]);
+  }, [currentPage, debouncedValue]);
 
   return (
     <section className="search">
@@ -114,7 +117,7 @@ const SearchComponent = () => {
             <Pagination
               currentPage={currentPage}
               onClickHandler={onClickHandler}
-              totalPages={artworkCollection?.totalPages}
+              totalPages={artworkCollection?.totalPages || 10000}
             />
           </>
         )}
