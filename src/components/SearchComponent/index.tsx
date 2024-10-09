@@ -38,6 +38,9 @@ const SearchComponent = () => {
   const handleInputChange = (value: string) => {
     setSearchInput(value);
     setSearchForm({ ...searchForm, searchInput: searchInput });
+    if (value.length === 0) {
+      setArtworkCollection({ collection: [], totalPages: 0 });
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -95,8 +98,12 @@ const SearchComponent = () => {
       <div className="search__validation-message">{searchInput.length !== 0 ? validationError : ""}</div>
 
       <div className="search__list-wrapper">
-        {(artworkCollection?.collection.length === 0 && !loading) || searchForm.searchInput.length === 0 ? (
-          <h2 className="search__list-empty">Dive into your imagination — type the first thing that comes to mind!</h2>
+        {(artworkCollection?.collection.length === 0 && !loading) || searchInput.length === 0 ? (
+          <h2 className="search__list-empty">
+            {artworkCollection?.collection.length === 0 && searchInput.length !== 0
+              ? "Try something else..."
+              : "Dive into your imagination — type the first thing that comes to mind!"}
+          </h2>
         ) : (
           <>
             <div className="search__sort">

@@ -3,6 +3,14 @@
   height: 514px;
   position: relative;
 
+  .bookmark__button,
+  .bookmark__button-saved {
+    position: absolute;
+    right: 63px;
+    top: 418px;
+    z-index: 10;
+  }
+
   &__info-container {
     border: 1px solid $color-border-light;
     background-color: $color-white;
@@ -31,7 +39,12 @@
     @include flex-container(column, space-around, flex-start);
     @include long-text;
     max-width: 200px;
-    padding-right: 20px;
+    width: 100%;
+    padding-left: 1rem;
+
+    &-container {
+      @include flex-start(row);
+    }
 
     &-name {
       @include long-text;

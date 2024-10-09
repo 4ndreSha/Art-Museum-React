@@ -35,8 +35,6 @@ const ArtworkInfo = () => {
   useEffect(() => {
     if (id) {
       fetchArtworkData(id);
-      console.log(artworkData);
-      console.log(id);
     }
   }, [id]);
 
@@ -49,7 +47,7 @@ const ArtworkInfo = () => {
         <>
           <div className="artwork__image">
             <img src={imageUrl} alt={artworkData?.title} />
-            <BookmarkButton />
+            <BookmarkButton id={artworkData?.id || 0} />
           </div>
           <div className="artwork__textContainer">
             <div className="artwork__info">
