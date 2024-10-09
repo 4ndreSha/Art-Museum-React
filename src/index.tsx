@@ -14,7 +14,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/favorites/" element={<Favorites />} />
-        <Route path="/artwork/" element={<Artwork />} />
+        <Route path="/artwork/:id" element={<Artwork />} />
       </Routes>
     </HashRouter>
   </React.StrictMode>,
