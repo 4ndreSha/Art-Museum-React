@@ -4,9 +4,13 @@
   padding: 1rem;
   border: 1px solid $color-border-light;
   @include flex-container(row, space-between, center);
-  gap: 1rem;
   background-color: $color-white;
-  // flex-wrap: wrap;
+
+  &__wrapper {
+    @include flex-container(row, space-between, center);
+    gap: 1rem;
+    width: 315px;
+  }
 
   &__image {
     width: 80px;

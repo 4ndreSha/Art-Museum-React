@@ -1,4 +1,3 @@
-//import { ArtWorkCards, ArtWorkInfo, Data } from "@/types/types";
 import { ArtworkData, ArtworkCollection, SearchForm } from "@/types";
 import axios from "axios";
 
@@ -74,7 +73,7 @@ export async function getArtworksSearch(
         page: page || "1",
         limit: limit || "12",
         fields: FIELDS,
-        [sortParam]: searchForm.order, // Корректно передаем сортировку
+        [sortParam]: searchForm.order,
       },
     })
     .then((result) => ({

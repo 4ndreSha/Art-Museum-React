@@ -12,8 +12,8 @@ const Card: React.FC<ArtworkData> = ({ id, image_id, title, artist_title, is_pub
   const imageUrl = image_id ? IMG_URL_BASE + image_id + IMG_URL_PROPS : imgPlaceholder;
 
   return (
-    <NavLink to={`/artwork/${id}`} className="link">
-      <div className="card">
+    <div className="card">
+      <NavLink to={`/artwork/${id}`} className="link">
         <div className="card__image">
           <img src={imageUrl} alt={title} />
         </div>
@@ -23,10 +23,10 @@ const Card: React.FC<ArtworkData> = ({ id, image_id, title, artist_title, is_pub
             <div className="card__info-author orange">{artist_title ? artist_title : "Author unknown"}</div>
             <div className="card__info-access">{is_public_domain ? "Public" : "Private"}</div>
           </div>
-          <BookmarkButton />
         </div>
-      </div>
-    </NavLink>
+      </NavLink>
+      <BookmarkButton id={id} />
+    </div>
   );
 };
 

@@ -12,19 +12,21 @@ const MiniCard: React.FC<ArtworkData> = ({ id, image_id, title, artist_title, is
   const imageUrl = image_id ? IMG_URL_BASE + image_id + IMG_URL_PROPS : imgPlaceholder;
 
   return (
-    <NavLink to={`/artwork/${id}`} className="link">
-      <div className="miniCard">
-        <div className="miniCard__image">
-          <img src={imageUrl} alt={title} />
+    <div className="miniCard">
+      <NavLink to={`/artwork/${id}`} className="link">
+        <div className="miniCard__wrapper">
+          <div className="miniCard__image">
+            <img src={imageUrl} alt={title} />
+          </div>
+          <div className="miniCard__info">
+            <div className="miniCard__info-name">{title ? title : "Untitled"}</div>
+            <div className="miniCard__info-author orange">{artist_title ? artist_title : "Author unknown"}</div>
+            <div className="miniCard__info-access">{is_public_domain ? "Public" : "Private"}</div>
+          </div>
         </div>
-        <div className="miniCard__info">
-          <div className="miniCard__info-name">{title ? title : "Untitled"}</div>
-          <div className="miniCard__info-author orange">{artist_title ? artist_title : "Author unknown"}</div>
-          <div className="miniCard__info-access">{is_public_domain ? "Public" : "Private"}</div>
-        </div>
-        <BookmarkButton />
-      </div>
-    </NavLink>
+      </NavLink>
+      <BookmarkButton id={id} />
+    </div>
   );
 };
 
