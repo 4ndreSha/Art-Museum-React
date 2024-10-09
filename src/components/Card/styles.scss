@@ -16,9 +16,15 @@
   }
 
   &__image {
-    background-color: yellow;
+    background-color: $color-bg-search;
     width: 100%;
     height: 460px;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
   &__info {

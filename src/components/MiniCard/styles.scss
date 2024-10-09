@@ -12,6 +12,13 @@
     width: 80px;
     height: 80px;
   }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
   &__info {
     @include flex-container(column, space-between, flex-start);
     max-width: 219px;

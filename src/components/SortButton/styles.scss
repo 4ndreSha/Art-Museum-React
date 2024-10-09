@@ -1,0 +1,16 @@
+.sort-button {
+  cursor: pointer;
+  @include font(1.25rem, 300);
+  border-radius: 4px;
+  background-color: $color-bg-main;
+
+  &:hover {
+    background-color: $color-orange;
+    color: $color-white;
+  }
+}
+
+.active-btn {
+  background-color: $color-orange;
+  color: $color-white;
+}
