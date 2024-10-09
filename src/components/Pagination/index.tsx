@@ -5,9 +5,10 @@ import { useState } from "react";
 interface PaginationProps {
   currentPage: number;
   onClickHandler: (page: number) => void;
+  totalPages: number;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, onClickHandler }) => {
+const Pagination: React.FC<PaginationProps> = ({ currentPage, onClickHandler, totalPages = 10000 }) => {
   const [startPage, setStartPage] = useState(1);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -55,6 +56,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, onClickHandler }) 
         {startPage}
       </button>
       <button
+        disabled={totalPages < startPage + 1 ? true : false}
         value={startPage + 1}
         className={`pagination__button ${currentPage === startPage + 1 ? "active" : ""}`}
         onClick={handleClick}
@@ -62,6 +64,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, onClickHandler }) 
         {startPage + 1}
       </button>
       <button
+        disabled={totalPages < startPage + 2 ? true : false}
         value={startPage + 2}
         className={`pagination__button ${currentPage === startPage + 2 ? "active" : ""}`}
         onClick={handleClick}
@@ -69,13 +72,19 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, onClickHandler }) 
         {startPage + 2}
       </button>
       <button
+        disabled={totalPages < startPage + 3 ? true : false}
         value={startPage + 3}
         className={`pagination__button ${currentPage === startPage + 3 ? "active" : ""}`}
         onClick={handleClick}
       >
         {startPage + 3}
       </button>
-      <button value="+" className="pagination__button-next" onClick={handleClickArrow}>
+      <button
+        disabled={totalPages === currentPage ? true : false}
+        value="+"
+        className={`pagination__button-next`}
+        onClick={handleClickArrow}
+      >
         &gt;
       </button>
     </div>
