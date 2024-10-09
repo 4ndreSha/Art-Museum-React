@@ -7,6 +7,7 @@ import { ArtworkCollection, ArtworkData, SearchForm } from "@/types";
 import { useDebounce } from "@/utils";
 import * as yup from "yup";
 import { validationSchema } from "@/utils";
+import { SkeletonLoaderMiniCard } from "../SkeletonLoader";
 
 import "@components/SearchComponent/styles.scss";
 
@@ -22,6 +23,8 @@ const SearchComponent = () => {
     sortParameter: "date_start",
     order: "desc",
   });
+
+  const skeletonCount = 12;
 
   const debouncedValue = useDebounce(searchForm);
 
@@ -123,7 +126,11 @@ const SearchComponent = () => {
               </SortButton>
             </div>
             {loading ? (
-              <div>loading</div>
+              <div className="search__list">
+                {Array.from({ length: skeletonCount }, (_, index) => (
+                  <SkeletonLoaderMiniCard key={index} />
+                ))}
+              </div>
             ) : (
               <>
                 <div className="search__list">
