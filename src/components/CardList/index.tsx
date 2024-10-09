@@ -57,7 +57,11 @@ const CardList = () => {
           </div>
         </>
       )}
-      <Pagination currentPage={currentPage} onClickHandler={onClickHandler} />
+      <Pagination
+        currentPage={currentPage}
+        onClickHandler={onClickHandler}
+        totalPages={artworkCollection?.totalPages || 10000}
+      />
     </div>
   );
 };
