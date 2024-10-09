@@ -19,7 +19,12 @@ const SortButton: React.FC<SortButtonProps> = ({ value = "", isActive, onClickHa
   };
 
   return (
-    <button type="button" value={value} className={`sort-button ${isActive ? "active-btn" : ""}`} onClick={onClick}>
+    <button
+      type="button"
+      value={value}
+      className={`sort-button ${isActive ? "active-btn" : ""} ${isActive ? (order ? "up-btn" : "down-btn") : ""}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

@@ -3,6 +3,7 @@
   @include font(1.25rem, 300);
   border-radius: 4px;
   background-color: $color-bg-main;
+  padding-left: 3px;
 
   &:hover {
     background-color: $color-orange;
@@ -13,4 +14,30 @@
 .active-btn {
   background-color: $color-orange;
   color: $color-white;
+}
+
+.up-btn {
+  &::after {
+    content: ">";
+    transform: rotate(-90deg);
+    width: 10px;
+    height: 10px;
+    height: 10px;
+    display: inline-block;
+    position: relative;
+    right: 8px;
+    top: 8px;
+  }
+}
+.down-btn {
+  &::after {
+    content: ">";
+    transform: rotate(+90deg);
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    position: relative;
+    left: 12px;
+    top: 8px;
+  }
 }
