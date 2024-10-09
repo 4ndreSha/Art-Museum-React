@@ -10,10 +10,10 @@ interface SortButtonProps {
 }
 
 const SortButton: React.FC<SortButtonProps> = ({ value = "", isActive, onClickHandler, children }) => {
-  const [order, setOrder] = useState(true);
+  const [order, setOrder] = useState(false);
 
   const onClick = () => {
-    const newOrder = isActive ? !order : true;
+    const newOrder = isActive ? !order : false;
     setOrder(newOrder);
     onClickHandler(value, newOrder);
   };
