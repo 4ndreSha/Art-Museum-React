@@ -21,6 +21,8 @@
   },
   "homepage": "https://4ndreSha.github.io/art-museum-react",
   "dependencies": {
+    "@types/dotenv-webpack": "^7.0.7",
+    "axios": "^1.7.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2"
@@ -35,6 +37,7 @@
     "@types/react-dom": "^18.3.0",
     "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
+    "dotenv-webpack": "^8.1.0",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.8.3",
