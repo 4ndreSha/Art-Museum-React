@@ -14,7 +14,7 @@
 
   &__form {
     width: 100%;
-    max-width: 500px;
+    max-width: 762px;
     height: 64px;
     padding: 16px;
     border-radius: 16px;
@@ -23,7 +23,7 @@
     background-color: $color-bg-search;
 
     &-input {
-      width: 80%;
+      width: 90%;
       background-color: transparent;
       border: none;
     }
@@ -39,6 +39,12 @@
 
   &__list {
     @include mini-card-list;
+
+    &-empty {
+      margin-top: 50px;
+      @include font(1.2rem, 400, 20px);
+      color: $color-light-grey;
+    }
   }
   .pagination {
     margin: 0 10%;
