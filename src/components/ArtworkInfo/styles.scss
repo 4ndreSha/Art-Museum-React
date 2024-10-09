@@ -10,7 +10,8 @@
     width: 50%;
     position: relative;
 
-    .bookmarkButton {
+    .bookmark__button,
+    .bookmark__button-saved {
       position: absolute;
       right: 16px;
       top: 16px;
