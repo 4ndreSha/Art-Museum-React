@@ -5,6 +5,8 @@ import SortButton from "@components/SortButton";
 import { getArtworksSearch } from "@/api";
 import { ArtworkCollection, ArtworkData, SearchForm } from "@/types";
 import { useDebounce } from "@/utils";
+import * as yup from "yup";
+import { validationSchema } from "@/utils";
 
 import "@components/SearchComponent/styles.scss";
 
@@ -12,12 +14,13 @@ const SearchComponent = () => {
   const [loading, setLoading] = useState(true);
   const [artworkCollection, setArtworkCollection] = useState<ArtworkCollection>();
   const [error, setError] = useState("");
+  const [validationError, setValidationError] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [searchInput, setSearchInput] = useState("");
   const [searchForm, setSearchForm] = useState<SearchForm>({
     searchInput: "",
     sortParameter: "date_start",
-    order: "asc",
+    order: "desc",
   });
 
   const debouncedValue = useDebounce(searchForm);
@@ -35,7 +38,6 @@ const SearchComponent = () => {
   const handleInputChange = (value: string) => {
     setSearchInput(value);
     setSearchForm({ ...searchForm, searchInput: searchInput });
-    console.log(searchForm);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -47,17 +49,24 @@ const SearchComponent = () => {
 
   const onSortButtonClick = (sortParameter: string, order: boolean) => {
     setSearchForm({ ...searchForm, sortParameter: sortParameter, order: order ? "asc" : "desc" });
-    console.log(searchForm);
   };
 
   const fetchArtworks = useCallback(async () => {
-    setLoading(true);
     try {
-      const data = await getArtworksSearch(searchForm, currentPage, 12);
+      await validationSchema.validate(debouncedValue.searchInput);
+      setLoading(true);
+      const data = await getArtworksSearch(debouncedValue, currentPage, 12);
       setArtworkCollection(data);
+      setValidationError("");
     } catch (error) {
-      console.error("Search error:", error);
-      setError("Failed to fetch artworks. Please try again.");
+      if (error instanceof yup.ValidationError) {
+        setValidationError(error.message);
+        console.error("Validation error:", error.message);
+      } else {
+        console.error("Search error:", error);
+        setError("Failed to fetch artworks. Please try again.");
+      }
+      setArtworkCollection({ collection: [], totalPages: 0 });
     } finally {
       setLoading(false);
     }
@@ -83,9 +92,10 @@ const SearchComponent = () => {
         />
         <button type="submit" className="search__form-submit" />
       </form>
+      <div className="search__validation-message">{searchInput.length !== 0 ? validationError : ""}</div>
 
       <div className="search__list-wrapper">
-        {searchInput.length === 0 ? (
+        {(artworkCollection?.collection.length === 0 && !loading) || searchForm.searchInput.length === 0 ? (
           <h2 className="search__list-empty">Dive into your imagination — type the first thing that comes to mind!</h2>
         ) : (
           <>

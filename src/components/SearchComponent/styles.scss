@@ -37,6 +37,14 @@
     }
   }
 
+  &__validation-message {
+    height: 4rem;
+    @include font(1.2rem, 400, 20px);
+    color: $color-red;
+    @include flex-center;
+    text-align: center;
+  }
+
   &__sort {
     @include flex-container(row, center, center, 1rem);
     margin: 2rem 1rem;
@@ -47,9 +55,10 @@
     @include mini-card-list;
 
     &-empty {
-      margin-top: 50px;
-      @include font(1.2rem, 400, 20px);
+      margin-top: 2rem;
+      @include font(1.5rem, 400, 28px);
       color: $color-light-grey;
+      text-align: center;
     }
   }
   .pagination {
