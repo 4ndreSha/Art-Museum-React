@@ -18,3 +18,9 @@ export interface ArtworkCollection {
   collection: ArtworkData[];
   totalPages: number;
 }
+
+export interface SearchForm {
+  searchInput: string;
+  sortParameter: string;
+  order: string;
+}

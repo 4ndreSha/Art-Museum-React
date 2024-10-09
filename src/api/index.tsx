@@ -1,5 +1,5 @@
 //import { ArtWorkCards, ArtWorkInfo, Data } from "@/types/types";
-import { ArtworkData, ArtworkCollection } from "@/types";
+import { ArtworkData, ArtworkCollection, SearchForm } from "@/types";
 import axios from "axios";
 
 const API_URL = process.env.API_URL || "null";
@@ -46,7 +46,6 @@ export async function getNumberOfPages(page: number = 1, limit: number = 12): Pr
       },
     })
     .then((result) => {
-      console.log(result);
       return result.data.pagination.total_pages;
     })
     .catch((error) => {
@@ -56,18 +55,26 @@ export async function getNumberOfPages(page: number = 1, limit: number = 12): Pr
 }
 
 export async function getArtworksSearch(
-  search: string = "",
+  searchForm: SearchForm = {
+    searchInput: "",
+    sortParameter: "is_public_domain",
+    order: "asc",
+  },
   page: number = 1,
   limit: number = 12,
 ): Promise<ArtworkCollection> {
-  const url = `${API_URL}/search?`;
+  const url = `${API_URL}/search`;
+
+  const sortParam = `sort[${searchForm.sortParameter}][order]`;
+
   return axios
     .get(url, {
       params: {
-        q: search || "cats",
+        q: searchForm.searchInput || "cats",
         page: page || "1",
         limit: limit || "12",
         fields: FIELDS,
+        [sortParam]: searchForm.order, // Корректно передаем сортировку
       },
     })
     .then((result) => ({

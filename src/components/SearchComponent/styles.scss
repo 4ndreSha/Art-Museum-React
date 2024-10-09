@@ -37,6 +37,12 @@
     }
   }
 
+  &__sort {
+    @include flex-container(row, center, center, 1rem);
+    margin: 2rem 1rem;
+    max-width: 1280px;
+  }
+
   &__list {
     @include mini-card-list;
 
