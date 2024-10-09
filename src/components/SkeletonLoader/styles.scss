@@ -40,7 +40,7 @@
     height: 132px;
     padding: 0 1rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     gap: 2rem;
   }
@@ -85,6 +85,36 @@
     height: 59px;
     background-color: $color-loading-medium;
     border-radius: 99px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skeleton__card {
+    width: 324px;
+    height: 457px;
+
+    &__image {
+      width: 100%;
+      height: 380px;
+    }
+
+    &__info {
+      max-width: 180px;
+
+      &-container {
+        width: 280px;
+        height: 122px;
+        left: 22px;
+        top: 310px;
+      }
+    }
+
+    &-bookmark__button {
+      position: absolute;
+      right: 35px;
+      top: 341px;
+      z-index: 10;
+    }
   }
 }
 
@@ -156,12 +186,36 @@
     }
   }
 
-  &__bookmark__button {
-    background-color: $color-bg-bookmark;
+  &-bookmark__button {
+    background-color: $color-loading-light;
     width: 59px;
     height: 59px;
     border-radius: 99px;
     transition: 0.3s ease;
     @include flex-center;
+  }
+}
+
+@media (max-width: 480px) {
+  .skeleton__miniCard {
+    width: 324px;
+    height: 100px;
+
+    &__wrapper {
+      width: 220px;
+    }
+
+    &__image {
+      width: 70px;
+      height: 70px;
+    }
+
+    &__info {
+      max-width: 130px;
+
+      &-access {
+        margin-top: 0.5rem;
+      }
+    }
   }
 }

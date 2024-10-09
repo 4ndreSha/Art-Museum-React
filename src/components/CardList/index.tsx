@@ -4,7 +4,7 @@ import Pagination from "@components/Pagination";
 import { getArtworksAxios } from "@/api";
 import { useState, useEffect, useCallback } from "react";
 import { ArtworkCollection, ArtworkData } from "@/types";
-import { SkeletonLoaderCard } from "../SkeletonLoader";
+import { SkeletonLoaderCard, SkeletonLoaderMiniCard } from "../SkeletonLoader";
 import ErrorComponent from "../ErrorComponent";
 
 import "@components/CardList/styles.scss";
@@ -42,6 +42,7 @@ const CardList = () => {
     <div className="list-wrapper">
       {error && <ErrorComponent error={error} />}
 
+      <SkeletonLoaderMiniCard key={1} />
       {loading ? (
         <>
           <div className="list">
