@@ -65,7 +65,7 @@ const ArtworkInfo = () => {
               <h3 className="artwork__overview-title">Overview</h3>
               <div className="artwork__overview-nationality">
                 <span className="orange">Artist nationality: </span>
-                {artworkData?.date_display ? artworkData.date_display : "No date"}
+                {artworkData?.date_display ? artworkData.artist_display : "No date"}
               </div>
               <div className="artwork__overview-dimensions">
                 <span className="orange">Sheet Dimensions: </span>
