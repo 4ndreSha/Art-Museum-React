@@ -5,6 +5,7 @@ import { getArtworksAxios } from "@/api";
 import { useState, useEffect, useCallback } from "react";
 import { ArtworkCollection, ArtworkData } from "@/types";
 import { SkeletonLoaderCard } from "../SkeletonLoader";
+import ErrorComponent from "../ErrorComponent";
 
 import "@components/CardList/styles.scss";
 
@@ -39,7 +40,7 @@ const CardList = () => {
 
   return (
     <div className="list-wrapper">
-      {error && <div className="error-message">{error}</div>}
+      {error && <ErrorComponent error={error} />}
 
       {loading ? (
         <>

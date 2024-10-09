@@ -8,6 +8,7 @@ import { useDebounce } from "@/utils";
 import * as yup from "yup";
 import { validationSchema } from "@/utils";
 import { SkeletonLoaderMiniCard } from "../SkeletonLoader";
+import ErrorComponent from "@components/ErrorComponent";
 
 import "@components/SearchComponent/styles.scss";
 
@@ -99,6 +100,8 @@ const SearchComponent = () => {
         <button type="submit" className="search__form-submit" />
       </form>
       <div className="search__validation-message">{searchInput.length !== 0 ? validationError : ""}</div>
+
+      {error && <ErrorComponent error={error} />}
 
       <div className="search__list-wrapper">
         {(artworkCollection?.collection.length === 0 && !loading) || searchInput.length === 0 ? (

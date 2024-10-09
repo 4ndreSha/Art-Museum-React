@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 import { ArtworkData } from "@/types";
 import { useParams } from "react-router-dom";
 import imgPlaceholder from "@assets/img-placeholder.svg";
+import ErrorComponent from "@components/ErrorComponent";
 
 import "@components/ArtworkInfo/styles.scss";
 
@@ -40,7 +41,7 @@ const ArtworkInfo = () => {
 
   return (
     <section className="artwork">
-      {error && <div className="error-message">{error}</div>}
+      {error && <ErrorComponent error={error} />}
       {loading ? (
         <div className="loading-gif" />
       ) : (

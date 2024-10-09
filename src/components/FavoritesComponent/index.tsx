@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 import { useSessionStorageContext } from "@/utils/SessionStorage";
 import { getArtworkById } from "@/api";
 import { ArtworkData } from "@/types";
+import ErrorComponent from "@components/ErrorComponent";
 
 import "@components/FavoritesComponent/styles.scss";
 
 const FavoritesComponent = () => {
   const [artworkCollection, setArtworkCollection] = useState<ArtworkData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const sessionStorageContext = useSessionStorageContext();
   const ids = sessionStorageContext.getAll();
@@ -27,6 +29,7 @@ const FavoritesComponent = () => {
       );
       setArtworkCollection(res);
     } catch (error) {
+      setError("Failed to fetch artworks. Please try again.");
       console.error("Search error:", error);
     } finally {
       setLoading(false);
@@ -47,6 +50,7 @@ const FavoritesComponent = () => {
         <div className="loading-gif" />
       ) : (
         <>
+          {error && <ErrorComponent error={error} />}
           {artworkCollection.length > 0 ? (
             <div className="favorites__list">
               {artworkCollection.map((card: ArtworkData) => (

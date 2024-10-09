@@ -5,6 +5,7 @@ import { getArtworksAxios, getNumberOfPages } from "@/api";
 import { useState, useEffect, useCallback } from "react";
 import { ArtworkCollection, ArtworkData } from "@/types";
 import { SkeletonLoaderMiniCard, SkeletonLoaderCard } from "../SkeletonLoader";
+import ErrorComponent from "@components/ErrorComponent";
 
 const GallerySuggestor = () => {
   const [loading, setLoading] = useState(true);
@@ -48,7 +49,7 @@ const GallerySuggestor = () => {
         </div>
       ) : (
         <>
-          {error && <div className="error-message">{error}</div>}
+          {error && <ErrorComponent error={error} />}
           <div className="suggestor__list">
             {artworkCollection?.collection.map((art: ArtworkData) => <MiniCard key={art.id} {...art} />)}
           </div>

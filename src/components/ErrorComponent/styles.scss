@@ -1,0 +1,11 @@
+.error__container {
+  height: 100px;
+  width: 200px;
+  @include flex-center(row);
+
+  &-message {
+    @include font(1.5rem, 400, 28px);
+    @include long-text;
+    color: $color-red;
+  }
+}
