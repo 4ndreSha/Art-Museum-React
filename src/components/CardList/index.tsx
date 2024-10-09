@@ -4,6 +4,7 @@ import Pagination from "@components/Pagination";
 import { getArtworksAxios } from "@/api";
 import { useState, useEffect, useCallback } from "react";
 import { ArtworkCollection, ArtworkData } from "@/types";
+import { SkeletonLoaderCard } from "../SkeletonLoader";
 
 import "@components/CardList/styles.scss";
 
@@ -12,6 +13,8 @@ const CardList = () => {
   const [artworkCollection, setArtworkCollection] = useState<ArtworkCollection>();
   const [error, setError] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+
+  const skeletonCount = 3;
 
   const fetchArtworks = useCallback(async () => {
     setLoading(true);
@@ -37,8 +40,15 @@ const CardList = () => {
   return (
     <div className="list-wrapper">
       {error && <div className="error-message">{error}</div>}
+
       {loading ? (
-        <div>loading</div>
+        <>
+          <div className="list">
+            {Array.from({ length: skeletonCount }, (_, index) => (
+              <SkeletonLoaderCard key={index} />
+            ))}
+          </div>
+        </>
       ) : (
         <>
           <div className="list">
