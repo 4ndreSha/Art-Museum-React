@@ -42,7 +42,7 @@ const ArtworkInfo = () => {
     <section className="artwork">
       {error && <div className="error-message">{error}</div>}
       {loading ? (
-        <div>loading</div>
+        <div className="loading-gif" />
       ) : (
         <>
           <div className="artwork__image">

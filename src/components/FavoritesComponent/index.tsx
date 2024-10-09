@@ -44,7 +44,7 @@ const FavoritesComponent = () => {
       <h4 className="favorites__list-subtitle orange">Saved by you</h4>
       <h3 className="favorites__list-title">Your favorites list</h3>
       {loading ? (
-        <div> Loading... </div>
+        <div className="loading-gif" />
       ) : (
         <>
           {artworkCollection.length > 0 ? (

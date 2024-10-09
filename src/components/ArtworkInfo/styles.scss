@@ -68,3 +68,7 @@
     }
   }
 }
+
+.loading-gif {
+  @include css-icon("~@assets/loading.gif", 80px, 80px);
+}
