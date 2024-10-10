@@ -16,7 +16,7 @@ const Header = () => {
 
   useEffect(() => {
     const closeMenu = (e: MouseEvent) => {
-      if (isOpen && !document.querySelector(".header__nav").contains(e.target as Node)) {
+      if (isOpen && !document.querySelector(".header__nav")?.contains(e.target as Node)) {
         setIsOpen(false);
       }
     };

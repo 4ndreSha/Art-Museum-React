@@ -31,8 +31,6 @@ const SearchComponent = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted with search input:", searchInput);
-    //sendForm(); // Вызов функции поиска или обработки формы
   };
 
   const onClickHandler = (page: number) => {
@@ -49,8 +47,7 @@ const SearchComponent = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      console.log("Enter key pressed");
-      //sendForm(); // Здесь также можно вызывать функцию поиска, если это необходимо
+      // Do smth...
     }
   };
 
