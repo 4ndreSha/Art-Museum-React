@@ -7,7 +7,7 @@
   &__image {
     align-self: start;
     max-width: 500px;
-    width: 50%;
+    width: 60%;
     position: relative;
 
     .bookmark__button,
@@ -72,4 +72,12 @@
 .loading-gif {
   @include css-icon("~@assets/loading.gif", 80px, 80px);
   margin: 3rem;
+}
+
+@media (max-width: 480px) {
+  .artwork {
+    &__image {
+      width: 80%;
+    }
+  }
 }
