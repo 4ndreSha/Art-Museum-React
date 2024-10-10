@@ -16,7 +16,7 @@ const Header = () => {
 
   useEffect(() => {
     const closeMenu = (e: MouseEvent) => {
-      if (isOpen && !document.querySelector(".header__nav").contains(e.target as Node)) {
+      if (isOpen && !document.querySelector(".header__nav")?.contains(e.target as Node)) {
         setIsOpen(false);
       }
     };
@@ -31,7 +31,7 @@ const Header = () => {
         <img src={logo} alt="Website logo" />
       </NavLink>
       <nav className="header__nav">
-        <div className="burger-menu" onClick={toggleMenu}>
+        <div className="burger-menu" role="button" onClick={toggleMenu}>
           <div className={`burger-menu__btn ${isOpen ? "open" : ""}`}>
             <span />
             <span />

@@ -6,6 +6,7 @@ import { useState, useEffect, useCallback } from "react";
 import { ArtworkCollection, ArtworkData } from "@/types";
 import { SkeletonLoaderMiniCard, SkeletonLoaderCard } from "../SkeletonLoader";
 import ErrorComponent from "@components/ErrorComponent";
+import { ErrorBoundaryStyled } from "@components/ErrorBoundary";
 
 const GallerySuggestor = () => {
   const [loading, setLoading] = useState(true);
@@ -26,7 +27,6 @@ const GallerySuggestor = () => {
       const data = await getArtworksAxios(randomPageNumber, 9);
       setArtworkCollection(data);
     } catch (error) {
-      console.error("Search error:", error);
       setError("Failed to fetch artworks. Please try again.");
     } finally {
       setLoading(false);
@@ -50,9 +50,11 @@ const GallerySuggestor = () => {
       ) : (
         <>
           {error && <ErrorComponent error={error} />}
-          <div className="suggestor__list">
-            {artworkCollection?.collection.map((art: ArtworkData) => <MiniCard key={art.id} {...art} />)}
-          </div>
+          <ErrorBoundaryStyled>
+            <div className="suggestor__list">
+              {artworkCollection?.collection.map((art: ArtworkData) => <MiniCard key={art.id} {...art} />)}
+            </div>
+          </ErrorBoundaryStyled>
         </>
       )}
     </section>

@@ -3,6 +3,10 @@
   width: 200px;
   @include flex-center(row);
 
+  &-title {
+    @include font(1.5rem, 400, 28px);
+    color: $color-red;
+  }
   &-message {
     @include font(1.5rem, 400, 28px);
     @include long-text;
