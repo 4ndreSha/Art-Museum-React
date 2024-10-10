@@ -1,0 +1,72 @@
+.search {
+  @include flex-start;
+  flex: 1 0 auto;
+  margin: 120px 1rem 60px 1rem;
+
+  &__title {
+    color: $color-dark;
+    @include font(4rem, 700, 80px);
+    text-transform: capitalize;
+    max-width: 700px;
+    margin: 2rem 0.5rem;
+    text-align: center;
+  }
+
+  &__form {
+    width: 100%;
+    max-width: 762px;
+    height: 64px;
+    padding: 16px;
+    border-radius: 16px;
+    @include flex-container(row, space-between, center);
+    @include font(1rem, 400, 16.94px);
+    background-color: $color-bg-search;
+
+    &-input {
+      width: 90%;
+      background-color: transparent;
+      border: none;
+    }
+
+    &-submit {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      @include css-icon("~@assets/search.svg", 32px, 32px);
+    }
+  }
+
+  &__validation-message {
+    height: 4rem;
+    @include font(1.2rem, 400, 20px);
+    color: $color-red;
+    @include flex-center;
+    text-align: center;
+  }
+
+  &__sort {
+    @include flex-container(row, center, center, 1rem);
+    margin: 2rem 1rem;
+    max-width: 1280px;
+  }
+
+  &__list {
+    @include mini-card-list;
+
+    &-empty {
+      margin-top: 2rem;
+      @include font(1.5rem, 400, 28px);
+      color: $color-light-grey;
+      text-align: center;
+    }
+  }
+  .pagination {
+    margin: 0 10%;
+  }
+}
+
+.error {
+  margin-top: 15px;
+  color: $color-red;
+}

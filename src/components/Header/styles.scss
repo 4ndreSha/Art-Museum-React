@@ -1,0 +1,122 @@
+.header {
+  background: $color-bg-header;
+  height: 127px;
+  width: 100%;
+  @include flex-container(row, space-around, center);
+
+  &__nav {
+    @include flex-container;
+    gap: 1rem;
+    @include font(19px, 400, normal, Inter);
+
+    .burger-menu {
+      display: none;
+
+      .burger-menu__btn {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 18px;
+
+        span {
+          display: block;
+          height: 2px;
+          background-color: $color-white;
+          transition:
+            transform 0.3s ease,
+            background-color 0.3s ease;
+
+          &:nth-child(1) {
+            transform-origin: top left;
+          }
+          &:nth-child(3) {
+            transform-origin: bottom left;
+          }
+        }
+
+        &.open span:nth-child(1) {
+          transform: rotate(45deg);
+        }
+        &.open span:nth-child(2) {
+          opacity: 0;
+        }
+        &.open span:nth-child(3) {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      z-index: 10;
+
+      @media (max-width: 480px) {
+        transform: translateX(-100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 100vh;
+        background: $color-bg-header;
+        flex-direction: column;
+        padding: 80px 20px;
+        align-items: flex-start;
+
+        &.open {
+          transform: translateX(0);
+          opacity: 1;
+          transition:
+            transform 0.3s ease,
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+        }
+      }
+    }
+
+    &-link {
+      color: $color-white;
+      @include flex-start(row);
+      gap: 0.5rem;
+      text-decoration: none;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        background-color: $color-white;
+        left: 50%;
+        transform: translateX(-48%);
+        width: 0;
+        transition: width 0.3s ease;
+        bottom: -10%;
+        box-shadow: 0 2px 10px rgb(255, 255, 255);
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header__nav {
+      .burger-menu {
+        display: flex;
+      }
+
+      .nav-links {
+        &.open {
+          display: flex;
+        }
+      }
+    }
+  }
+}

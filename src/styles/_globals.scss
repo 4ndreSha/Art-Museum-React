@@ -1,0 +1,24 @@
+body {
+  background-color: $color-bg-main;
+}
+
+.orange {
+  color: $color-orange;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.link {
+  text-decoration: none;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+  padding-inline: none;
+}

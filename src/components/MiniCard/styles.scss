@@ -1,0 +1,72 @@
+.miniCard {
+  width: 416px;
+  height: 130px;
+  padding: 1rem;
+  border: 1px solid $color-border-light;
+  @include flex-container(row, space-between, center);
+  background-color: $color-white;
+
+  &__wrapper {
+    @include flex-container(row, space-between, center);
+    gap: 1rem;
+    width: 315px;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__info {
+    @include flex-container(column, space-between, flex-start);
+    max-width: 219px;
+    max-height: 98px;
+    width: 100%;
+
+    &-name {
+      @include long-text;
+      @include font(1.125rem, 500, 26.32px);
+      color: $color-dark;
+    }
+    &-author {
+      @include long-text;
+      @include font(1rem, 400, 26.32px);
+    }
+    &-access {
+      @include long-text;
+      @include font(1rem, 700, 26.32px);
+      color: $color-dark;
+      margin-top: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .miniCard {
+    width: 324px;
+    height: 100px;
+
+    &__wrapper {
+      width: 220px;
+    }
+
+    &__image {
+      width: 70px;
+      height: 70px;
+    }
+
+    &__info {
+      max-width: 130px;
+
+      &-access {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}

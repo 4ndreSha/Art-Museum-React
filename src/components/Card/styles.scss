@@ -1,0 +1,98 @@
+.card {
+  width: 387px;
+  height: 514px;
+  position: relative;
+
+  .bookmark__button,
+  .bookmark__button-saved {
+    position: absolute;
+    right: 50px;
+    top: 418px;
+    z-index: 10;
+  }
+
+  &__info-container {
+    border: 1px solid $color-border-light;
+    background-color: $color-white;
+    position: absolute;
+    left: 26px;
+    top: 382px;
+    width: 334px;
+    height: 132px;
+    padding: 0 1rem;
+    @include flex-container(row, space-around, center, 2rem);
+  }
+
+  &__image {
+    background-color: $color-bg-search;
+    width: 100%;
+    height: 460px;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__info {
+    @include flex-container(column, space-around, flex-start);
+    @include long-text;
+    max-width: 200px;
+    width: 100%;
+
+    &-container {
+      @include flex-start(row);
+    }
+
+    &-name {
+      @include long-text;
+      @include font(1.125rem, 500, 26px);
+      color: $color-dark;
+    }
+    &-author {
+      @include long-text;
+      @include font(1rem, 400, 26px);
+    }
+    &-access {
+      @include long-text;
+      @include font(1rem, 700, 26px);
+      color: $color-dark;
+      margin-top: 0.5rem;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 324px;
+    height: 457px;
+
+    &__image {
+      width: 100%;
+      height: 380px;
+    }
+
+    &__info {
+      max-width: 180px;
+
+      &-container {
+        width: 280px;
+        height: 122px;
+        left: 22px;
+        top: 310px;
+      }
+    }
+
+    .bookmark__button,
+    .bookmark__button-saved {
+      position: absolute;
+      right: 35px;
+      top: 341px;
+      z-index: 10;
+    }
+  }
+}
