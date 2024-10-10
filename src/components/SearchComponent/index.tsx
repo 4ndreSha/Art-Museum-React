@@ -9,6 +9,7 @@ import * as yup from "yup";
 import { validationSchema } from "@/utils";
 import { SkeletonLoaderMiniCard } from "../SkeletonLoader";
 import ErrorComponent from "@components/ErrorComponent";
+import { ErrorBoundaryStyled } from "@components/ErrorBoundary";
 
 import "@components/SearchComponent/styles.scss";
 
@@ -65,9 +66,7 @@ const SearchComponent = () => {
     } catch (error) {
       if (error instanceof yup.ValidationError) {
         setValidationError(error.message);
-        console.error("Validation error:", error.message);
       } else {
-        console.error("Search error:", error);
         setError("Failed to fetch artworks. Please try again.");
       }
       setArtworkCollection({ collection: [], totalPages: 0 });
@@ -97,55 +96,55 @@ const SearchComponent = () => {
         <button type="submit" className="search__form-submit" />
       </form>
       <div className="search__validation-message">{searchInput.length !== 0 ? validationError : ""}</div>
-
       {error && <ErrorComponent error={error} />}
-
-      <div className="search__list-wrapper">
-        {(artworkCollection?.collection.length === 0 && !loading) || searchInput.length === 0 ? (
-          <h2 className="search__list-empty">
-            {artworkCollection?.collection.length === 0 && searchInput.length !== 0
-              ? "Try something else..."
-              : "Dive into your imagination — type the first thing that comes to mind!"}
-          </h2>
-        ) : (
-          <>
-            <div className="search__sort">
-              <SortButton
-                value="date_start"
-                isActive={searchForm.sortParameter === "date_start" ? true : false}
-                onClickHandler={onSortButtonClick}
-              >
-                Date
-              </SortButton>
-              <SortButton
-                value="is_public_domain"
-                isActive={searchForm.sortParameter === "is_public_domain" ? true : false}
-                onClickHandler={onSortButtonClick}
-              >
-                Publicity
-              </SortButton>
-            </div>
-            {loading ? (
-              <div className="search__list">
-                {Array.from({ length: skeletonCount }, (_, index) => (
-                  <SkeletonLoaderMiniCard key={index} />
-                ))}
+      <ErrorBoundaryStyled>
+        <div className="search__list-wrapper">
+          {(artworkCollection?.collection.length === 0 && !loading) || searchInput.length === 0 ? (
+            <h2 className="search__list-empty">
+              {artworkCollection?.collection.length === 0 && searchInput.length !== 0
+                ? "Try something else..."
+                : "Dive into your imagination — type the first thing that comes to mind!"}
+            </h2>
+          ) : (
+            <>
+              <div className="search__sort">
+                <SortButton
+                  value="date_start"
+                  isActive={searchForm.sortParameter === "date_start" ? true : false}
+                  onClickHandler={onSortButtonClick}
+                >
+                  Date
+                </SortButton>
+                <SortButton
+                  value="is_public_domain"
+                  isActive={searchForm.sortParameter === "is_public_domain" ? true : false}
+                  onClickHandler={onSortButtonClick}
+                >
+                  Publicity
+                </SortButton>
               </div>
-            ) : (
-              <>
+              {loading ? (
                 <div className="search__list">
-                  {artworkCollection?.collection.map((art: ArtworkData) => <MiniCard key={art.id} {...art} />)}
+                  {Array.from({ length: skeletonCount }, (_, index) => (
+                    <SkeletonLoaderMiniCard key={index} />
+                  ))}
                 </div>
-              </>
-            )}
-            <Pagination
-              currentPage={currentPage}
-              onClickHandler={onClickHandler}
-              totalPages={artworkCollection?.totalPages || 10000}
-            />
-          </>
-        )}
-      </div>
+              ) : (
+                <>
+                  <div className="search__list">
+                    {artworkCollection?.collection.map((art: ArtworkData) => <MiniCard key={art.id} {...art} />)}
+                  </div>
+                </>
+              )}
+              <Pagination
+                currentPage={currentPage}
+                onClickHandler={onClickHandler}
+                totalPages={artworkCollection?.totalPages || 10000}
+              />
+            </>
+          )}
+        </div>
+      </ErrorBoundaryStyled>
     </section>
   );
 };
