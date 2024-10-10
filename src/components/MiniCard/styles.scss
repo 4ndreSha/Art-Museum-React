@@ -46,3 +46,27 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .miniCard {
+    width: 324px;
+    height: 100px;
+
+    &__wrapper {
+      width: 220px;
+    }
+
+    &__image {
+      width: 70px;
+      height: 70px;
+    }
+
+    &__info {
+      max-width: 130px;
+
+      &-access {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}

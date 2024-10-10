@@ -40,7 +40,6 @@
     @include long-text;
     max-width: 200px;
     width: 100%;
-    padding-left: 1rem;
 
     &-container {
       @include flex-start(row);
@@ -64,5 +63,36 @@
   }
   &:hover {
     cursor: pointer;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 324px;
+    height: 457px;
+
+    &__image {
+      width: 100%;
+      height: 380px;
+    }
+
+    &__info {
+      max-width: 180px;
+
+      &-container {
+        width: 280px;
+        height: 122px;
+        left: 22px;
+        top: 310px;
+      }
+    }
+
+    .bookmark__button,
+    .bookmark__button-saved {
+      position: absolute;
+      right: 35px;
+      top: 341px;
+      z-index: 10;
+    }
   }
 }

@@ -43,4 +43,16 @@
 }
 .loading-gif {
   @include css-icon("~@assets/loading.gif", 80px, 80px);
+  margin: 3rem;
+}
+
+@media (max-width: 480px) {
+  .favorites {
+    &__subtitle {
+      @include font(2.5rem, 700, 80px);
+    }
+    &__title {
+      @include font(2.5rem, 700, 80px);
+    }
+  }
 }
