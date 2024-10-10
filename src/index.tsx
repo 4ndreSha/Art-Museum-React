@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "@/pages/Home";
 import Favorites from "@/pages/Favorites";
 import Artwork from "@/pages/Artwork";
@@ -14,13 +14,13 @@ root.render(
   <React.StrictMode>
     <ErrorBoundaryStyled>
       <SessionStorageProvider>
-        <HashRouter>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/favorites/" element={<Favorites />} />
             <Route path="/artwork/:id" element={<Artwork />} />
           </Routes>
-        </HashRouter>
+        </BrowserRouter>
       </SessionStorageProvider>
     </ErrorBoundaryStyled>
   </React.StrictMode>,

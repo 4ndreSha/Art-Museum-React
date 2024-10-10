@@ -27,7 +27,6 @@ const GallerySuggestor = () => {
       const data = await getArtworksAxios(randomPageNumber, 9);
       setArtworkCollection(data);
     } catch (error) {
-      console.error("Search error:", error);
       setError("Failed to fetch artworks. Please try again.");
     } finally {
       setLoading(false);

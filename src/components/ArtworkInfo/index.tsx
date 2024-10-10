@@ -26,7 +26,6 @@ const ArtworkInfo = () => {
       const data = await getArtworkById(id);
       setArtworkData(data);
     } catch (error) {
-      console.error("Search error:", error);
       setError("Failed to fetch artworks. Please try again.");
     } finally {
       setLoading(false);
